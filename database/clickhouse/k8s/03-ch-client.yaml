@@ -1,0 +1,28 @@
+---
+# === ClickHouse Client Pod ===
+apiVersion: v1
+kind: Pod
+metadata:
+  name: clickhouse-client
+  labels:
+    app: clickhouse
+    component: client
+spec:
+  containers:
+    - name: client
+      image: clickhouse/clickhouse-client
+      command: ["sleep", "infinity"]
+      env:
+        - name: CLICKHOUSE_HOST
+          value: "clickhouse-service"
+        # - name: CLICKHOUSE_USER
+        #   value: "admin"
+        # - name: CLICKHOUSE_PASSWORD
+        #   value: "password"
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "128Mi"
+        limits:
+          cpu: "1"
+          memory: "1Gi"

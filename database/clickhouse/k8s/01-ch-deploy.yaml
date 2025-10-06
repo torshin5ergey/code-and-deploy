@@ -1,0 +1,56 @@
+---
+# === ClickHouse Server Deployment ===
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clickhouse-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: clickhouse-server
+      component: client
+  strategy:
+    type: Recreate # stateful
+  template:
+    metadata:
+      labels:
+        app: clickhouse-server
+        component: client
+    spec:
+      containers:
+        - name: clickhouse-server
+          image: clickhouse/clickhouse-server
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8123
+            - name: native
+              containerPort: 9000
+            - name: interserver
+              containerPort: 9009
+            - name: grpc
+              containerPort: 9100
+            - name: metrics
+              containerPort: 9363
+          env:
+            - name: CLICKHOUSE_USER
+              value: "default"
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "2Gi"
+            limits:
+              cpu: "2"
+              memory: "4Gi"
+          readinessProbe:
+            exec:
+              command:
+                - "sh"
+                - "-c"
+                - 'clickhouse-client --user="${CLICKHOUSE_USER}" --query="SELECT 1"'
+          livenessProbe:
+            tcpSocket:
+              port: 9000
+            initialDelaySeconds: 30
+            periodSeconds: 10
