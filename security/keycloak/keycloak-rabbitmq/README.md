@@ -1,0 +1,27 @@
+### RabbitMQ Setup with Keycloak as OAuth 2.0 server
+
+- Install `rabbitmq_auth_backend_oauth2` plugin
+```bash
+rabbitmq-plugins enable rabbitmq_auth_backend_oauth2
+```
+- Setup Keycloak connect in [`/etc/rabbitmq/rabbitmq.conf`](/security/keycloak/keycloak-rabbitmq/rabbitmq.conf)
+```ini
+# log.console = true
+# log.console.level = debug
+
+auth_backends.1 = rabbit_auth_backend_oauth2
+auth_backends.2 = rabbit_auth_backend_internal # basic auth
+
+management.oauth_enabled = true
+management.oauth_client_id = <KEYCLOAK_CLIENT_ID>
+management.oauth_client_secret = <KEYCLOAK_CLIENT_SECRET>
+management.oauth_provider_url = https://<KEYCLOAK_URL>/realms/<KEYCLOAK_REALM>
+management.oauth_scopes = openid profile
+management.oauth_disable_basic_auth = false # enable basic auth
+
+auth_oauth2.resource_server_id = <KEYCLOAK_CLIENT_ID>
+auth_oauth2.preferred_username_claims.1 = preferred_username
+auth_oauth2.additional_scopes_key = extra_scope
+auth_oauth2.issuer = https://<KEYCLOAK_URL>/realms/<KEYCLOAK_REALM>
+auth_oauth2.https.hostname_verification = wildcard
+```
