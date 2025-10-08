@@ -19,6 +19,8 @@ DevOps deploy templates and configurations
   - [postgresql]()
   - [redis](/database/redis/)
     - [redisinsight](/database/redis/redisinsight/)
+- [infrastructure](/infrastructure/)
+  - [dnsmasq](/infrastructure/dnsmasq/)
 - [kubernetes](/kubernetes/)
   - [ansible awx](/kubernetes/ansible-awx/)
   - [efk](/kubernetes/efk/)
