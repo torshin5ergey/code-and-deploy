@@ -1,0 +1,24 @@
+# === ConfigMap for containerd ===
+# ! CUSTOMIZE: containerd config
+# Example configmap for containerd
+# ---
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: fluentd-config
+#   namespace: efk-logging
+# data:
+#   kubernetes.conf: |
+#     <source>
+#           @type tail
+#           @id in_tail_container_logs
+#           path /var/log/containers/*.log
+#           pos_file /var/log/fluentd-containers.log.pos
+#           tag "#{ENV['FLUENT_CONTAINER_TAIL_TAG'] || 'kubernetes.*'}"
+#           exclude_path "#{ENV['FLUENT_CONTAINER_TAIL_EXCLUDE_PATH'] || ''}"
+#           read_from_head true
+#           <parse>
+#             @type "#{ENV['FLUENT_CONTAINER_TAIL_PARSER_TYPE'] || 'json'}"
+#             time_format %Y-%m-%dT%H:%M:%S.%N%:z
+#           </parse>
+#     </source>

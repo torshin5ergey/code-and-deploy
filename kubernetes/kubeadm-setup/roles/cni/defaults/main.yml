@@ -1,0 +1,5 @@
+---
+# Options:
+#   - weave
+#   - calico
+cni_var_cni: "calico"

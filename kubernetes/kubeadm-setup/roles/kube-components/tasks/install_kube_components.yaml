@@ -1,0 +1,20 @@
+---
+- name: Download Kubernetes apt key
+  ansible.builtin.shell:
+    cmd: "curl -fsSL https://pkgs.k8s.io/core:/stable:/v{{ kube_components_var_k8s_version }}/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg"
+    creates: /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+- name: Add Kubernetes repository
+  ansible.builtin.copy:
+    dest: "/etc/apt/sources.list.d/kubernetes.list"
+    content: "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v{{ kube_components_var_k8s_version }}/deb/ /"
+    mode: "0644"
+
+- name: Install kubelet, kubeadm, kubectl from apt
+  ansible.builtin.apt:
+    name:
+      - kubelet
+      - kubeadm
+      - kubectl
+    state: present
+    update_cache: true

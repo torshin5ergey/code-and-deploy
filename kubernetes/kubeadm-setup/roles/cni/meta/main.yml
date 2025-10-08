@@ -1,0 +1,11 @@
+---
+galaxy_info:
+  author: torshin5ergey
+  description: "Setup CNI"
+  company: torshin5ergey
+
+  license: CC0 1.0 Universal
+
+  min_ansible_version: "2.1"
+
+dependencies: []

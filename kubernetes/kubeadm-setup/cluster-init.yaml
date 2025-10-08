@@ -1,0 +1,79 @@
+---
+- name: Prepare all nodes
+  hosts: all
+  become: true
+  roles:
+    - common
+
+- name: Install container runtime
+  hosts: all
+  become: true
+  vars:
+    # ! CUSTOMIZE
+    cri_var_cri: "docker"
+  roles:
+    - cri
+
+- name: Install kubernetes components
+  hosts: all
+  become: true
+  vars:
+    # ! CUSTOMIZE
+    kube_components_var_k8s_version: "1.32"
+  roles:
+    - kube-components
+
+- name: Initialize control plane
+  hosts: controllers
+  become: true
+  vars:
+    # ! CUSTOMIZE
+    var_k8s_version: "1.32.3"
+    var_cidr: "10.10.0.0/16" # for now works only with Calico
+  tasks:
+    - name: Run kubeadm init
+      ansible.builtin.command: |
+        kubeadm init \
+          --kubernetes-version v{{ var_k8s_version }} \
+          --pod-network-cidr={{ var_cidr }}
+      register: kubeadm_init
+      changed_when: "'initialized successfully!' in kubeadm_init.stdout"
+
+    - name: Create .kube directory
+      ansible.builtin.file:
+        path: "/home/{{ ansible_user }}/.kube"
+        state: directory
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: "0755"
+
+    - name: Copy admin config
+      ansible.builtin.copy:
+        src: /etc/kubernetes/admin.conf
+        dest: "/home/{{ ansible_user }}/.kube/config"
+        remote_src: true
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: "0600"
+
+    - name: Extract join command
+      ansible.builtin.set_fact:
+        join_command: "{{ kubeadm_init.stdout | regex_search('kubeadm join[\\S\\s]*sha256:[a-f0-9]{64}') }}"
+
+    - name: Save join command to file
+      ansible.builtin.copy:
+        dest: "/home/{{ ansible_user }}/kubeadm_join.sh"
+        content: |
+          #!/bin/bash
+          {{ join_command }}
+        mode: "0755"
+      when: join_command is defined
+
+- name: Install CNI Plugin
+  hosts: controller
+  become: false
+  vars:
+    # ! CUSTOMIZE
+    cni_var_cni: "calico"
+  roles:
+    - cni

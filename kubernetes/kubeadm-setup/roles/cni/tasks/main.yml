@@ -1,0 +1,10 @@
+---
+- name: Install Weave Net
+  ansible.builtin.include_tasks: install_weave.yaml
+  tags: cni_weave
+  when: cni_var_cni == "weave"
+
+- name: Install Calico
+  ansible.builtin.include_tasks: install_calico.yaml
+  tags: cni_calico
+  when: cni_var_cni == "calico"

@@ -1,0 +1,6 @@
+# === EFK Namespace ===
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: efk-logging

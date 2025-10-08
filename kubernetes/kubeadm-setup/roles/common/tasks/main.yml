@@ -1,0 +1,16 @@
+---
+- name: Install common packages
+  ansible.builtin.include_tasks: install_common_apt.yaml
+  tags: apt
+
+- name: Disable Swap
+  ansible.builtin.include_tasks: disable_swap.yaml
+  tags: swap
+
+- name: Setup ufw
+  ansible.builtin.include_tasks: setup_ufw.yaml
+  tags: ufw
+
+- name: Enable IPv4 Packet Forwarding
+  ansible.builtin.include_tasks: enable_ipv4_pf.yaml
+  tags: ipv4_port_forward

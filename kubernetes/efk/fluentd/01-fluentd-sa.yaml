@@ -1,0 +1,10 @@
+# === RBAC: Fluentd Service Account ===
+# Access to Kubernetes API
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: fluentd
+  namespace: efk-logging
+  labels:
+    app: fluentd

@@ -1,0 +1,4 @@
+---
+- name: Install k8s components
+  ansible.builtin.include_tasks: install_kube_components.yaml
+  tags: kube_components

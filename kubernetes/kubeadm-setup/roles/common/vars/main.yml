@@ -1,0 +1,21 @@
+---
+common_var_apt_packages:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - gpg
+  - containerd
+
+common_var_ufw_rules:
+  - { port: "22" }
+  - { port: "6443" }
+  - { port: "2379:2380" }
+  - { port: "10250" }
+  - { port: "10259" }
+  - { port: "10257" }
+  - { port: "10256" }
+  - { port: "30000:32767" }
+  - { port: "6783", proto: "tcp" }
+  - { port: "6783", proto: "udp" }
+  - { port: "6784", proto: "udp" }
+  - { port: "179", proto: "tcp" }

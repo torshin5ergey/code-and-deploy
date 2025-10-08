@@ -1,0 +1,27 @@
+# === Elasticsearch Local Volume ===
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: data-elasticsearch
+  namespace: efk-logging
+spec:
+  storageClassName: "local-storage"
+  capacity:
+    storage: 8Gi # ! CUSTOMIZE
+  accessModes:
+    - ReadWriteOnce # only one node can mount this volume
+  persistentVolumeReclaimPolicy: Retain # save volume data after pvc deletion
+  local:
+    path: /mnt/data-elasticsearch # ! CUSTOMIZE: storage path
+  claimRef: # bind to pvc
+    name: data-elasticsearch-es-cluster-0
+    namespace: efk-logging
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - minikube # ! CUSTOMIZE: node name

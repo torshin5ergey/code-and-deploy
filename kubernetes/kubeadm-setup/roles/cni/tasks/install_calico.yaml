@@ -1,0 +1,5 @@
+---
+- name: Apply Calico manifest
+  ansible.builtin.command: "kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml"
+  register: kubectl_output
+  changed_when: kubectl_output.rc != 0

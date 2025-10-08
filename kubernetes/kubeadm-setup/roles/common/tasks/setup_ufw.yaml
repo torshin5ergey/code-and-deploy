@@ -1,0 +1,8 @@
+---
+- name: Setup ufw
+  community.general.ufw:
+    state: enabled
+    rule: allow
+    port: "{{ item.port }}"
+    proto: "{{ item.proto | default('tcp') }}"
+  loop: "{{ common_var_ufw_rules }}"

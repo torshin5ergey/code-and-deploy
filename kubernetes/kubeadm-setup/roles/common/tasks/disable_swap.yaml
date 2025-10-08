@@ -1,0 +1,12 @@
+---
+- name: Disable Swap
+  ansible.builtin.command: "swapoff -a"
+  register: result
+  changed_when: result.rc != 0
+- name: Check result
+  ansible.builtin.command: "free -m"
+  register: result
+  changed_when: result.rc != 0
+- name: Print result
+  ansible.builtin.debug:
+    var: result.stdout
