@@ -1,0 +1,15 @@
+---
+# === Redis Insight Services ===
+apiVersion: v1
+kind: Service
+metadata:
+  name: redisinsight-service
+  namespace: redisinsight
+spec:
+  type: ClusterIP
+  selector:
+    app: redisinsight
+  ports:
+    - port: 5540
+      targetPort: http
+      protocol: TCP

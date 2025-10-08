@@ -1,0 +1,19 @@
+---
+# === Redis Insight Preconfigured DB Connections ===
+# ! CUSTOMIZE: preconfigured database connections
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-connections
+data:
+  connections.json: |
+    [
+      {
+        "id": "redis-host",
+        "name": "redis-host",
+        "host": "redis-host.infra",
+        "port": 6379,
+        "username": "default",
+        "password": ""
+      }
+    ]

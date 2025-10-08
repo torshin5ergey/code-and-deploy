@@ -1,0 +1,18 @@
+[
+  {
+    "id": "redis-stage-host",
+    "name": "redis-stage-host",
+    "host": "192.168.0.10",
+    "port": 6379,
+    "username": "default",
+    "password": ""
+  },
+  {
+    "id": "redis-prod-host",
+    "name": "redis-prod-host",
+    "host": "redis-prod-host.infra",
+    "port": 6379,
+    "username": "default",
+    "password": ""
+  }
+]
