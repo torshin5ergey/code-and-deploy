@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: keycloak-config
+data:
+  keycloak.conf: |
+    http-enabled=true
+    hostname-strict=false
+
+    # hostname-backchannel-dynamic=true # hostname required
+
+    # db
+    db-url=jdbc:mysql://mysql:3306/keycloak
+    db-username=root
+    db-password=rootpass
+
+    log-level=debug
