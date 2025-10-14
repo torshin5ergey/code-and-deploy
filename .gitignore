@@ -4,5 +4,4 @@
 venv
 
 # gitlab data volume directory
-gitlab-data/*
-!gitlab-data/.gitkeep
+gitlab-data/
