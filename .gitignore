@@ -2,3 +2,6 @@
 
 .venv
 venv
+
+gitlab-data/*
+!gitlab-data/.gitkeep
