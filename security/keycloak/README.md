@@ -62,6 +62,14 @@ docker run \
 ```
 - Access with web browser `http://localhost:8080` with `bootstrap-admin:qwerty` credentials
 
+**Basic dev deploy**
+
+- Run Docker container
+```bash
+docker run -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -p 8080:8080 quay.io/keycloak/keycloak:26.3 start-dev
+```
+- Access with web browser `http://localhost:8080` with `admin:admin` credentials
+
 ## Author
 
 Sergey Torshin [@torshin5ergey](https://github.com/torshin5ergey)
