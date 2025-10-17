@@ -16,6 +16,7 @@ Basic Keycloak install/setup/deploy.
 - [All configuration](https://www.keycloak.org/server/all-config)
 - [Keycloak Account Console Status Code: 403 Forbidden ](https://keycloak.discourse.group/t/status-code-403-forbidden/10854/2)
 - [Keycloak OpenJDK](https://www.keycloak.org/getting-started/getting-started-zip)
+- [Token Lifespan Configuration Guide](https://docs.expertflow.com/cx-knowledgebase/latest/keycloak-token-lifespan-configuration)
 
 ## Native Install
 
