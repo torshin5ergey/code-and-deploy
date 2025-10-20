@@ -3,8 +3,6 @@
 ## References
 
 - [Installing on RPM-based Linux (RHEL, CentOS Stream, Fedora, Amazon Linux 2023)](https://www.rabbitmq.com/docs/install-rpm)
-- [Troubleshooting OAuth 2](https://www.rabbitmq.com/docs/troubleshooting-oauth2)
-- [OAuth 2.0 Authentication Backend](https://www.rabbitmq.com/docs/oauth2#variables-configurable)
 
 ## Native Install
 
