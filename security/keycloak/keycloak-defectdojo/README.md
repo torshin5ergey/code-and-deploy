@@ -1,8 +1,10 @@
-# SAML
+# DefectDojo+Keycloak Connect SAML
 
 ## References
 
-- https://docs.defectdojo.com/en/customize_dojo/user_management/configure_sso/#keycloak
+- [DefectDojo SSO Configuration (OAuth, SAML)](https://docs.defectdojo.com/en/customize_dojo/user_management/configure_sso/#keycloak)
+
+## DefectDojo Setup
 
 `docker-compose.yaml`
 ```yaml
@@ -19,3 +21,35 @@ uwsgi:
     DD_SOCIAL_AUTH_KEYCLOAK_ACCESS_TOKEN_URL: 'http://<KEYCLOAK_HOST>/realms/<KEYCLOAK_REALM>/protocol'
     # DD_SOCIAL_AUTH_KEYCLOAK_LOGIN_BUTTON_TEXT: customize the login button’s text caption
 ```
+
+## Keycloak Client Setup
+
+Don't forget to map Keycloak groups and Client Scopes to corresponding Client Roles
+
+### Client
+
+- Client ID: `defectdojo`
+- Root URL: `https://<DEFECTDOJO_HOSTNAME>/`
+- Home URL: `https://<DEFECTDOJO_HOSTNAME>`
+- Valid redirect URIs: `https://<DEFECTDOJO_HOSTNAME>/*`
+- Valid post logout redirect URIs: `https://<DEFECTDOJO_HOSTNAME>/logout`
+- Web origins: `https://<DEFECTDOJO_HOSTNAME>`
+- Admin URL: `https://<DEFECTDOJO_HOSTNAME>`
+- Client authentication: `On`
+- Authorization: `Off`
+- Authentication flow: `Standard flow`, `Direct access grants`
+- Client Roles:
+  - `awx_administrators`
+  - `awx_users`
+
+### Client Scope Mappers
+
+- **Defectdojo**
+  - `aud`: Audience
+  - `groups`: 	Group Membership
+  - `roles`: 	User Client Role
+  - Scope: `defectdojo-access`
+
+## Author
+
+Sergey Torshin [@torshin5ergey](https://github.com/torshin5ergey)
