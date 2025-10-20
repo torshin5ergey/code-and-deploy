@@ -1,0 +1,11 @@
+# basic config
+server.name: opensearch-dashboards
+server.host: "0.0.0.0"
+server.ssl.enabled: false
+server.customResponseHeaders: { "Access-Control-Allow-Credentials": "true" }
+
+opensearch.hosts: "https://<OPENSEARCH_HOST>"
+opensearch.ssl.verificationMode: none
+opensearch.username: kibanaserver
+opensearch.password: kibanaserver
+opensearch.requestHeadersWhitelist: ["securitytenant", "Authorization"]
