@@ -18,4 +18,3 @@ services:
 
 networks:
   dnsmasq:
-    driver: bridge
