@@ -6,6 +6,8 @@ Quick ingress-ready `kind` setup
 
 - [Kind Quick Start](https://kind.sigs.k8s.io/docs/user/quick-start/)
 - [How to Test Ingress in a kind cluster](https://dustinspecker.com/posts/test-ingress-in-kind/)
+- [Install and Set Up kubectl on Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+- [Installing Helm](https://helm.sh/docs/intro/install/)
 
 ## Setup
 
