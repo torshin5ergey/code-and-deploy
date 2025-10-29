@@ -1,11 +1,15 @@
 # Kind Local Cluster
 
+Quick ingress-ready `kind` setup
+
 ##  Reference
+
 - [Kind Quick Start](https://kind.sigs.k8s.io/docs/user/quick-start/)
 - [How to Test Ingress in a kind cluster](https://dustinspecker.com/posts/test-ingress-in-kind/)
 
 ## Setup
-- This cluster setup uses ingress ready `kind.config`
+
+- This cluster setup uses ingress-ready `kind.config`
 ```yaml
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
@@ -21,6 +25,7 @@ nodes:
 ```
 - Install kind cluster
 ```bash
+# --image kindest/node:v1.31.0 for specific kubernetes version
 kind create cluster --name local-cluster --config kind.config --kubeconfig ~/.kube/kind-config.conf
 ```
 - Stop kind cluster
@@ -35,3 +40,7 @@ docker start local-cluster-control-plane
 ```bash
 kind delete cluster --name local-cluster
 ```
+
+## Author
+
+Sergey Torshin [@torshin5ergey](https://github.com/torshin5ergey)
