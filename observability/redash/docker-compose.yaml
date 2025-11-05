@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  server:
+    image: redash/redash:latest
+    container_name: redash-server
+    ports:
+      - 5000:5000
+    environment:
+      - REDASH_DATABASE_URL=postgresql://redash:password@db/redash
+      - REDASH_REDIS_URL=redis://redis:6379/0
+      - REDASH_COOKIE_SECRET=secret
+      # - REDASH_SECRET_KEY=secret
+      # - REDASH_DATABASE_NAME=redash
+      # - REDASH_DATABASE_USERNAME=redash
+      # - REDASH_DATABASE_PASSWORD=redash
+    depends_on:
+      - redis
+      - db
+    restart: unless-stopped
+    networks:
+      - redash-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    restart: unless-stopped
+    networks:
+      - redash-network
+
+  db:
+    image: postgres:12-alpine
+    container_name: postgresql
+    environment:
+      - POSTGRES_DB=redash
+      - POSTGRES_USER=redash
+      - POSTGRES_PASSWORD=password
+    restart: unless-stopped
+    networks:
+      - redash-network
+
+networks:
+  redash-network:
