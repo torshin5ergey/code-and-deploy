@@ -8,6 +8,7 @@
 ## References
 
 - [Self-Hosted Sentry](https://develop.sentry.dev/self-hosted/)
+- [Sentry. Configuration and Authentication](https://docs.sentry.io/cli/configuration/)
 - [Дружим Sentry Self-Hosted и LDAP](https://habr.com/ru/articles/691140/)
 
 ## Docker deploy
