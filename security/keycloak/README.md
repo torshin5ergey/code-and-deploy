@@ -41,9 +41,9 @@ tar -xzvf keycloak-26.4.0.tar.gz
 - Run keycloak in dev mode
 ```bash
 cd keycloak-26.4.0
-bin/kc.sh start-dev
+bin/kc.sh start-dev --bootstrap-admin-username bootstrap-admin --bootstrap-admin-password bootstrap-admin
 ```
-- Access on `http://localhost:8080/`
+- Access on `http://localhost:8080/admin` with `bootstrap-admin:bootstrap-admin`
 
 ## Docker deploy
 
