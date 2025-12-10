@@ -18,7 +18,7 @@ DevOps deploy templates and configurations
   - [clickhouse](/database/clickhouse/)
   - [mongodb](/database/mongodb/)
   - [mysql](/database/mysql/)
-  - [postgresql]()
+  - [postgresql](/database/postgresql/)
   - [redis](/database/redis/)
     - [redisinsight](/database/redis/redisinsight/)
 - [infrastructure](/infrastructure/)
