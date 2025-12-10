@@ -1,6 +1,6 @@
 # Keycloak
 
-Basic Keycloak install/setup/deploy.
+Basic Keycloak install|deploy.
 
 **Table of Contents:**
 - [References](#references)
@@ -41,9 +41,43 @@ tar -xzvf keycloak-26.4.0.tar.gz
 - Run keycloak in dev mode
 ```bash
 cd keycloak-26.4.0
-bin/kc.sh start-dev
+bin/kc.sh start-dev --bootstrap-admin-username bootstrap-admin --bootstrap-admin-password bootstrap-admin
 ```
-- Access on `http://localhost:8080/`
+- Access on `http://localhost:8080/admin` with `bootstrap-admin:bootstrap-admin`
+
+**Systemd Service Setup**
+- Create systemd service file
+```ini
+# /etc/systemd/system/keycloak.service
+[Unit]
+Description=Keycloak
+After=network.target
+
+[Service]
+Type=simple
+User=keycloak
+Group=keycloak
+WorkingDirectory=/opt/keycloak/keycloak-26.4.0
+Environment="KC_LOG_LEVEL=INFO"
+ExecStart=/opt/keycloak/keycloak-26.4.0/bin/kc.sh start-dev
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+- Create user and set permissions
+```bash
+groupadd -r keycloak
+useradd -r -g keycloak -G keycloak -s /bin/false -d /opt/keycloak keycloak
+chown -R keycloak:keycloak /opt/keycloak
+```
+- Start the service
+```bash
+systemctl daemon-reload
+systemctl restart keycloak
+systemctl status keycloak
+```
 
 ## Docker deploy
 
