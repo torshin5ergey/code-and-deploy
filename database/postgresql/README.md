@@ -22,13 +22,13 @@ docker run -d \
   -p 5432:5432 \
   -e POSTGRES_USER=postgres \
   -e POSTGRES_PASSWORD=postgres \
-  -e POSTGRES_DB=keycloak \
+  -e POSTGRES_DB=postgres \
   postgres:16
 ```
 
 - Connect to DB
 ```bash
-docker exec -it postgres-keycloak bash -c "psql -U postgres"
+docker exec -it postgres bash -c "psql -U postgres"
 ```
 
 ## Basic commands
