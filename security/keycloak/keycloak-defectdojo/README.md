@@ -39,8 +39,7 @@ Don't forget to map Keycloak groups and Client Scopes to corresponding Client Ro
 - Authorization: `Off`
 - Authentication flow: `Standard flow`, `Direct access grants`
 - Client Roles:
-  - `awx_administrators`
-  - `awx_users`
+  - `defectdojo-access`
 
 ### Client Scope Mappers
 
