@@ -1,4 +1,4 @@
-# DefectDojo+Keycloak Connect SAML
+# DefectDojo+Keycloak Connect OIDC
 
 ## References
 
@@ -17,8 +17,8 @@ uwsgi:
     DD_SOCIAL_AUTH_KEYCLOAK_PUBLIC_KEY: <KEYCLOAK_REALM_PUBLIC_KEY>
     DD_SOCIAL_AUTH_KEYCLOAK_KEY: <KEYCLOAK_CLIENT_ID>
     DD_SOCIAL_AUTH_KEYCLOAK_SECRET: <KEYCLOAK_CLIENT_SECRET>
-    DD_SOCIAL_AUTH_KEYCLOAK_AUTHORIZATION_URL: 'http://<KEYCLOAK_HOST>/realms/<KEYCLOAK_REALM>/protocol/openid-connect/auth'
-    DD_SOCIAL_AUTH_KEYCLOAK_ACCESS_TOKEN_URL: 'http://<KEYCLOAK_HOST>/realms/<KEYCLOAK_REALM>/protocol'
+    DD_SOCIAL_AUTH_KEYCLOAK_AUTHORIZATION_URL: 'https://<KEYCLOAK_HOST>/realms/<KEYCLOAK_REALM>/protocol/openid-connect/auth'
+    DD_SOCIAL_AUTH_KEYCLOAK_ACCESS_TOKEN_URL: 'https://<KEYCLOAK_HOST>/realms/<KEYCLOAK_REALM>/protocol/openid-connect/token'
     # DD_SOCIAL_AUTH_KEYCLOAK_LOGIN_BUTTON_TEXT: customize the login button’s text caption
 ```
 
