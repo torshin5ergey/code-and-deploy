@@ -11,6 +11,9 @@ Basic Keycloak install|deploy.
 - [Tokens](#tokens)
   - [ID Token](#id-token)
   - [Access Token](#access-token)
+- [Keycloak Benchmark](#keycloak-benchmark)
+  - [Prepare Dataset](#prepare-dataset)
+  - [Run Tests](#run-tests)
 - [Author](#author)
 
 ## References
@@ -21,6 +24,9 @@ Basic Keycloak install|deploy.
 - [Keycloak Account Console Status Code: 403 Forbidden ](https://keycloak.discourse.group/t/status-code-403-forbidden/10854/2)
 - [Keycloak OpenJDK](https://www.keycloak.org/getting-started/getting-started-zip)
 - [Token Lifespan Configuration Guide](https://docs.expertflow.com/cx-knowledgebase/latest/keycloak-token-lifespan-configuration)
+- [keycloak/keycloak-benchmark | GitHub](https://github.com/keycloak/keycloak-benchmark)
+- [Keycloak Benchmark](https://www.keycloak.org/keycloak-benchmark/)
+- [Keycloak Benchmark - Uma introdução](https://www.youtube.com/watch?v=1EX8HnM2riE&t=815s)
 
 ## Native Install
 
@@ -145,6 +151,74 @@ The ID token is used by the application to establish the identity of the authent
   A list of client roles
 - `scope`
   Can be used to decide what fields to include in the token and by backends to decide what APIs the token can access
+
+## Keycloak Benchmark
+
+- Download and extract
+```bash
+curl -L --progress-bar -O https://github.com/keycloak/keycloak-benchmark/releases/download/26.3.0-SNAPSHOT/keycloak-benchmark-26.3.0-SNAPSHOT.tar.gz
+tar -xzvf keycloak-benchmark-26.3.0-SNAPSHOT.tar.gz
+```
+
+### Prepare Dataset
+
+- Download and install the dataset provider
+```bash
+export KEYCLOAK_HOME=/opt/keycloak/keycloak-26.3.0/
+
+curl -L --progress-bar -O https://github.com/keycloak/keycloak-benchmark/releases/download/26.3.0-SNAPSHOT/keycloak-benchmark-dataset-26.3.0-SNAPSHOT.jar
+
+cp keycloak-benchmark-dataset-26.3.0-SNAPSHOT.jar $KEYCLOAK_HOME/providers/
+# Run Keycloak with the dataset provider
+systemctl restart keycloak
+```
+
+- Create test data via HTTP REST request
+```bash
+# create realms wit roles, clients, groups, users
+http://<KEYCLOAK_HOSTNAME>/realms/master/dataset/create-realms?count=3
+```
+
+### Run Tests
+
+- `ClientSecret` basic
+```bash
+cd keycloak-benchmark-26.3.0-SNAPSHOT/
+# default scenario keycloak.scenarion.authentication.ClientSecret
+./bin/kcb.sh \
+    --server-url=http://<KEYCLOAK_HOSTNAME> \
+    --realm-name=realm-0
+```
+- `AuthorizationCode` basic
+```bash
+./bin/kcb.sh --scenario=keycloak.scenario.authentication.AuthorizationCode \
+    --server-url=http://<KEYCLOAK_HOSTNAME>/ \
+    --realm-name=realm-0
+```
+- `AuthorizationCode` concurrent users, single realm
+```bash
+./bin/kcb.sh --scenario=keycloak.scenario.authentication.AuthorizationCode \
+    --server-url=http://<KEYCLOAK_HOSTNAME>/ \
+    --realm-name=realm-0 \
+    --users-per-realm=200 \
+    --clients-per-realm=30 \
+    --concurrent-users=200 \
+    --logout-percentage=20 \
+    --refresh-token-period=30 \
+    --refresh-token-count=2 \
+    --share-connections=true \
+    --ramp-up=60 \
+```
+- `Get` concurrent users, openid configuration path
+```bash
+./bin/kcb.sh --scenario=keycloak.scenario.basic.Get \
+    --server-url=http://<KEYCLOAK_HOSTNAME>/   \
+    --realm-name=realm-0 \
+    --basic-url="http://<KEYCLOAK_HOSTNAME>/realms/realm-0/.well-known/openid-configuration" \
+    --concurrent-users=100 \
+    --share-connections=true \
+    --measurement=180
+```
 
 ## Author
 
