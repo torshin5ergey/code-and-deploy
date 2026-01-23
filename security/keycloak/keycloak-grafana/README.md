@@ -27,6 +27,8 @@ token_url = http://<KEYCLOAK_HOSTNAME>/realms/<KEYCLOAK_REALM>/protocol/openid-c
 api_url = http://<KEYCLOAK_HOSTNAME>/realms/<KEYCLOAK_REALM>/protocol/openid-connect/userinfo
 # map 'groups' in token with Grafana roles
 role_attribute_path = contains(roles[*], 'grafana_admin') && 'Admin' || contains(roles[*], 'grafana_editor') && 'Editor' || contains(roles[*], 'grafana_viewer') && 'Viewer'
+# map global GrafanaAdmin
+role_attribute_path = contains(roles[*], 'grafana_admin') && 'GrafanaAdmin' || contains(roles[*], 'grafana_editor_dev') && 'Editor' || 'Viewer'
 allow_assign_grafana_admin = true
 use_refresh_token = true
 ```
