@@ -9,7 +9,7 @@ Tested on Opensearch Dashboards 3.2.0, Keycloak 26.3
 
 ## Opensearch setup
 
-- `config.yml`
+- `opensearch/config/opensearch-security/config.yml`
 ```ini
 ...
 config:
@@ -32,7 +32,7 @@ config:
             client_secret: "KEYCLOAK_CLIENT_SECRET"
 ...
 ```
-- `opensearch_dashboards.yml`
+- `opensearch-dashboards/config/opensearch_dashboards.yml`
 ```ini
 ...
 # Keycloak OIDC

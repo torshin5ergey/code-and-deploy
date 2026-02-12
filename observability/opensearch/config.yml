@@ -1,3 +1,4 @@
+# opensearch/config/opensearch-security/config.yml
 _meta:
   type: "config"
   config_version: 2
@@ -7,6 +8,7 @@ config:
     http:
       anonymous_auth_enabled: false
     authc:
+      # basic auth
       basic_internal_auth_domain:
         description: "Authenticate via HTTP Basic against internal users database"
         http_enabled: true

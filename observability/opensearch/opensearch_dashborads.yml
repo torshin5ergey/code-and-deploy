@@ -1,3 +1,5 @@
+# opensearch-dashboards/config/opensearch_dashboards.yml
+
 # basic config
 server.name: opensearch-dashboards
 server.host: "0.0.0.0"
