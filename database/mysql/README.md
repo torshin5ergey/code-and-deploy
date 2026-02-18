@@ -17,12 +17,23 @@ Basic MySQL deploy.
 
 ## Docker Deploy
 
-- Run Docker container
+- Run simple Docker container
 ```bash
 docker run -d \
   --name mysql \
   -p 3306:3306 \
   -e MYSQL_ROOT_PASSWORD=rootpassword \
+  mysql
+```
+- Run with user and db
+```bash
+docker run -d \
+  --name mysql \
+  -p 3306:3306 \
+  -e MYSQL_ROOT_PASSWORD=rootpassword \
+  -e MYSQL_DATABASE=app \
+  -e MYSQL_USER=app \
+  -e MYSQL_PASSWORD=app \
   mysql
 ```
 - Connect to DB
