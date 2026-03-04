@@ -4,8 +4,9 @@ Tested on Opensearch Dashboards 3.2.0, Keycloak 26.3
 
 ## References
 
-- https://docs.opensearch.org/latest/security/authentication-backends/openid-connect/
-- https://docs.opensearch.org/latest/security/configuration/multi-auth/
+- [Opensearch. OpenID Connect](https://docs.opensearch.org/latest/security/authentication-backends/openid-connect/)
+- [Configuring Dashboards sign-in for multiple authentication options](https://docs.opensearch.org/latest/security/configuration/multi-auth/)
+- [OpenID Connect troubleshooting](https://docs.opensearch.org/2.14/troubleshoot/openid-connect/)
 
 ## Opensearch setup
 
