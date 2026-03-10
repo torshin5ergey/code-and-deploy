@@ -9,6 +9,7 @@ Table of Contents:
 
 - [Docker - OpenSearch Documentation](https://docs.opensearch.org/latest/install-and-configure/install-opensearch/docker)
 - [Docker - OpenSearch Dashboards Documentation](https://docs.opensearch.org/latest/install-and-configure/install-dashboards/docker/)
+- [Generating self-signed certificates](https://docs.opensearch.org/latest/security/configuration/generate-certificates/#add-distinguished-names-to-opensearchyml)
 
 ## Docker deploy
 
