@@ -32,6 +32,8 @@ config:
             openid_connect_url: "https://<KEYCLOAK_HOSTNAME>/realms/<KEYCLOAK_REALM>/.well-known/openid-configuration"
             client_id: "KEYCLOAK_CLIENT_ID" # opensearch-dashboard
             client_secret: "KEYCLOAK_CLIENT_SECRET"
+        authentication_backend:
+          type: noop
 ...
 ```
 - `opensearch-dashboards/config/opensearch_dashboards.yml`
