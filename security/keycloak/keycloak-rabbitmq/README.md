@@ -46,7 +46,7 @@ Don't forget to map Keycloak groups and Client Scopes to corresponding Client Ro
 - Web origins: `https://<RABBITMQ_HOSTNAME>`
 - Admin URL: `https://<RABBITMQ_HOSTNAME>`
 - Client authentication: `On`
-- Authorizations: `Off`
+- Authorization: `Off`
 - Authentication flow: `Standard flow`, `Direct access grants`
 - Client Roles:
   - `rabbitmq.tag:administrator` (ClientID.tag:administrator)

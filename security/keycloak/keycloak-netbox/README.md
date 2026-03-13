@@ -124,7 +124,7 @@ Don't forget to map Keycloak groups and Client Scopes to corresponding Client Ro
 - Web Origins: `https://<NETBOX_HOSTNAME>`
 - Admin URL: `https://<NETBOX_HOSTNAME>`
 - Client authentication: `On`
-- Authorizations: `Off`
+- Authorization: `Off`
 - Authentication flow: `Standard flow`, `Direct access grants`
 - Client Roles:
   - `netbox_admins`

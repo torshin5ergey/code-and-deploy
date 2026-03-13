@@ -91,7 +91,7 @@ Don't forget to map Keycloak groups and Client Scopes to corresponding Client Ro
 - Web origins: `https://<OPENSEARCH_HOSTNAME>`
 - Admin URL: `https://<OPENSEARCH_HOSTNAME>`
 - Client authentication: `On`
-- Authorizations: `Off`
+- Authorization: `Off`
 - Authentication flow: `Standard flow`, `Direct access grants`
 - Client Roles:
   - `opensearch_admin`
