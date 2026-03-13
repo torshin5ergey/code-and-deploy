@@ -1,6 +1,6 @@
 # GitLab+Keycloak Setup OIDC
 
-Tested on GitLab 18.3.1-ce
+Tested on GitLab 18.3.1-ce, Keycloak 26.3
 
 ## References
 
@@ -13,7 +13,6 @@ Tested on GitLab 18.3.1-ce
 
 For Docker deploy
 ```yaml
-...
 ...
     environment:
       GITLAB_OMNIBUS_CONFIG: |
@@ -48,7 +47,6 @@ For Docker deploy
             }
           }
         ]
-        ...
 ...
 ```
 
@@ -66,12 +64,10 @@ Don't forget to map Keycloak groups and Client Scopes to corresponding Client Ro
 - Web Origins: `https://<GITLAB_HOSTNAME>/*`
 - Admin URL: `https://<GITLAB_HOSTNAME>`
 - Client authentication: `On`
-- Authorizations: `Off`
+- Authorization: `Off`
 - Authentication flow: `Standard flow`, `Direct access grants`
 - Client Roles:
-  - `grafana_admin`
-  - `grafana_editor`
-  - `grafana_viewer`
+  - `gitlab_users`
 
 ### Client Scope Mappers
 
