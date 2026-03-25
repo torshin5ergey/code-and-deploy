@@ -1,6 +1,6 @@
 # Grafana
 
-Basic Keycloak install|deploy.
+Basic Grafana deploy.
 
 **Table of Contents:**
 - [References](#references)
@@ -17,7 +17,7 @@ Basic Keycloak install|deploy.
 - Run Docker container
 ```bash
 docker run -d \
-  --name cnd-grafana \
+  --name grafana \
   -p 3000:3000 \
   grafana/grafana
 ```
