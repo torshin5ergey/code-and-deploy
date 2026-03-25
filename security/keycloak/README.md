@@ -27,6 +27,11 @@ Basic Keycloak install|deploy.
 - [keycloak/keycloak-benchmark | GitHub](https://github.com/keycloak/keycloak-benchmark)
 - [Keycloak Benchmark](https://www.keycloak.org/keycloak-benchmark/)
 - [Keycloak Benchmark - Uma introdução](https://www.youtube.com/watch?v=1EX8HnM2riE&t=815s)
+- https://www.keycloak.org/observability/configuration-metrics
+- https://www.keycloak.org/observability/keycloak-service-level-indicators
+- https://www.keycloak.org/observability/event-metrics
+- https://www.keycloak.org/observability/grafana-dashboards
+- https://grafana.com/grafana/dashboards/10441-keycloak-metrics-dashboard/
 
 ## Native Install
 
