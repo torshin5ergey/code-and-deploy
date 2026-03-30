@@ -1,8 +1,64 @@
 # RabbitMQ
 
+- [References](#references)
+- [Docker Deploy](#docker-deploy)
+  - [RabbitMQ 4.x + RabbitMQ Management](#rabbitmq-4x--rabbitmq-management)
+  - [RabbitMQ 4.x + RabbitMQ Management + config files](#rabbitmq-4x--rabbitmq-management--config-files)
+  - [Docker Compose Deploy](#docker-compose-deploy)
+- [Native Install](#native-install)
+  - [RedHat (AlmaLinux)](#redhat-almalinux)
+- [Configuring](#configuring)
+  - [RabbitMQ Management plugin](#rabbitmq-management-plugin)
+  - [RabbitMQ Setup with Keycloak as OAuth 2.0 server](#rabbitmq-setup-with-keycloak-as-oauth-20-server)
+- [Author](#author)
+
+
 ## References
 
 - [Installing on RPM-based Linux (RHEL, CentOS Stream, Fedora, Amazon Linux 2023)](https://www.rabbitmq.com/docs/install-rpm)
+- https://www.rabbitmq.com/docs/download
+- https://hub.docker.com/_/rabbitmq/
+
+## Docker Deploy
+
+### RabbitMQ 4.x + RabbitMQ Management
+
+- Start Docker container
+```bash
+docker run -d \ 
+  --name rabbitmq \
+  -p 5672:5672 \
+  -p 15672:15672 \
+  rabbitmq:4-management
+```
+
+### RabbitMQ 4.x + RabbitMQ Management + config files
+
+- Go to the project directory
+```bash
+cd message-broker/rabbitmq
+```
+- Start Docker container
+```bash
+docker run -d \ 
+  --name rabbitmq \
+  -p 5672:5672 \
+  -p 15672:15672 \
+  -v ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf \
+  -v ./enabled_plugins:/etc/rabbitmq/enabled_plugins \
+  rabbitmq:4-management
+```
+
+### Docker Compose Deploy
+
+- Go to the project directory
+```bash
+cd message-broker/rabbitmq
+```
+- Run Docker Compose
+```bash
+docker compose up -d
+```
 
 ## Native Install
 
