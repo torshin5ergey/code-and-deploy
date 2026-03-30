@@ -1,11 +1,13 @@
-# RabbitMQ+Keycloak Connect OIDC
+# RabbitMQ + Keycloak Connect OIDC
 
-Tested on RabbitMQ 4.1.4, Keycloak 26.3
+Tested on RabbitMQ 4.1.4, 3.10.21 and Keycloak 26.3.
+RabbitMQ does not create users in its internal database. RabbitMQ only decodes an access token provided by the client and authorizes a user based on the scopes found in the token.
 
 ## References
 
 - [Troubleshooting OAuth 2](https://www.rabbitmq.com/docs/troubleshooting-oauth2)
 - [OAuth 2.0 Authentication Backend](https://www.rabbitmq.com/docs/oauth2#variables-configurable)
+- [Management Plugin](https://www.rabbitmq.com/docs/management)
 
 ## RabbitMQ setup
 
@@ -27,13 +29,16 @@ management.oauth_enabled = true
 management.oauth_client_id = <KEYCLOAK_CLIENT_ID> # rabbitmq
 management.oauth_client_secret = <KEYCLOAK_CLIENT_SECRET>
 management.oauth_provider_url = https://<KEYCLOAK_HOSTNAME>/realms/<KEYCLOAK_REALM>
-management.oauth_scopes = openid profile
-management.oauth_disable_basic_auth = false # enable basic auth form
+management.oauth_scopes = openid
+# Enable basic auth form on login page
+# Works only on v3.13 and later. For v3.12 or earlier only one auth method will be shown on Management UI
+management.oauth_disable_basic_auth = false
 
 auth_oauth2.resource_server_id = <KEYCLOAK_CLIENT_ID>  # rabbitmq
 auth_oauth2.preferred_username_claims.1 = preferred_username
 auth_oauth2.additional_scopes_key = roles
-auth_oauth2.issuer = https://<KEYCLOAK_HOSTNAME>/realms/<KEYCLOAK_REALM>
+auth_oauth2.issuer = https://<KEYCLOAK_HOSTNAME>/realms/<KEYCLOAK_REALM> # Only for v3.13 and later. Use jwks_url instead
+# auth_oauth2.jwks_url = https://keycloak.dev.ctc.ru/realms/keycloak/protocol/openid-connect/certs
 # Allows connection to Keycloak with a wildcard certificate (*.example.com)
 # RabbitMQ can download JWKS and OpenID-configuration without the TLS hostname_check_failed error.
 # auth_oauth2.https.hostname_verification = wildcard
