@@ -25,7 +25,7 @@
 
 - Start Docker container
 ```bash
-docker run -d \ 
+docker run -d \
   --name rabbitmq \
   -p 5672:5672 \
   -p 15672:15672 \
@@ -40,7 +40,7 @@ cd message-broker/rabbitmq
 ```
 - Start Docker container
 ```bash
-docker run -d \ 
+docker run -d \
   --name rabbitmq \
   -p 5672:5672 \
   -p 15672:15672 \
