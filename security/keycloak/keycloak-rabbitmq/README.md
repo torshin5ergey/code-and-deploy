@@ -8,6 +8,7 @@ RabbitMQ does not create users in its internal database. RabbitMQ only decodes a
 - [Troubleshooting OAuth 2](https://www.rabbitmq.com/docs/troubleshooting-oauth2)
 - [OAuth 2.0 Authentication Backend](https://www.rabbitmq.com/docs/oauth2#variables-configurable)
 - [Management Plugin](https://www.rabbitmq.com/docs/management)
+- [[Keycloak] Access Refused when creating queues. GitHub Issue #15](https://github.com/rabbitmq/rabbitmq-oauth2-tutorial/issues/15)
 
 ## RabbitMQ setup
 
