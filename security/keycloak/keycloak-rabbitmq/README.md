@@ -60,6 +60,8 @@ Don't forget to map Keycloak groups and Client Scopes to corresponding Client Ro
 - Client Roles:
   - `rabbitmq.tag:administrator` (ClientID.tag:administrator)
   - `rabbitmq.tag:management` (ClientID.tag:management)
+  - `rabbitmq.read:*/*` (ClientID.read:*/*, read all resources, all vhosts) 
+  - `rabbitmq.write:*/*` (ClientID.write:*/*, write to all resources, all vhosts)
 
 ### Client Scope Mappers
 
@@ -67,7 +69,7 @@ Don't forget to map Keycloak groups and Client Scopes to corresponding Client Ro
   - `aud`: Audience
   - `preferred_username`: User Attribute (username)
   - `roles`: User Client Role
-  - Scope: `rabbitmq.tag:administrator`, `rabbitmq.tag:management`
+  - Scope: `rabbitmq.tag:administrator`, `rabbitmq.tag:management`, `rabbitmq.read:*/*`, `rabbitmq.write:*/*`
 
 ## Author
 
