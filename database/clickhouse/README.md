@@ -12,8 +12,8 @@ Basic ClickHouse deploy.
 
 ## References
 
-- https://clickhouse.com/docs/install
-- https://clickhouse.com/docs/interfaces/cli
+- [Install ClickHouse | ClickHouse Docs](https://clickhouse.com/docs/install)
+- [clickhousectl | ClickHouse Docs](https://clickhouse.com/docs/interfaces/cli)
 
 ## [Kubernetes Deploy](/database/clickhouse/k8s/)
 
@@ -33,6 +33,12 @@ sudo yum install -y clickhouse-server clickhouse-client
 
 # specified version
 sudo yum install -y clickhouse-server-22.8.7.34
+
+# or download and install archived version
+wget https://packages.clickhouse.com/repo-archive/rpm/stable/x86_64/clickhouse-common-static-20.9.2.20-2.x86_64.rpm
+wget https://packages.clickhouse.com/repo-archive/rpm/stable/x86_64/clickhouse-server-20.9.2.20-2.noarch.rpm
+wget https://packages.clickhouse.com/repo-archive/rpm/stable/x86_64/clickhouse-client-20.9.2.20-2.noarch.rpm
+dnf install clickhouse-common-static-20.9.2.20-2.x86_64.rpm clickhouse-server-20.9.2.20-2.noarch.rpm clickhouse-client-20.9.2.20-2.noarch.rpm
 ```
 
 3. Start ClickHouse server
