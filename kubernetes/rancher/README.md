@@ -9,7 +9,7 @@
 
 ## Reference
 
-- [Rancher. Password Requirements]https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/resources/bootstrap-password#password-requirements
+- [Rancher. Password Requirements](https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/resources/bootstrap-password#password-requirements)
 - [Rancher. Helm CLI Quick Start](https://ranchermanager.docs.rancher.com/getting-started/quick-start-guides/deploy-rancher-manager/helm-cli)
 - [Github  cert-manager/cert-manager](https://github.com/cert-manager/cert-manager/releases/)
 - [Github rancher/rancher issue Start rancher without ssl?!? #14063](https://github.com/rancher/rancher/issues/14063)
