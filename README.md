@@ -16,6 +16,7 @@ DevOps deploy templates and configurations
 
 - [database](/database/)
   - [clickhouse](/database/clickhouse/)
+    - [clickhouse-client](/database/clickhouse/clickhouse-client/)
   - [mongodb](/database/mongodb/)
   - [mysql](/database/mysql/)
   - [postgresql](/database/postgresql/)
