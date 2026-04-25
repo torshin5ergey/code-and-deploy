@@ -7,13 +7,17 @@ Basic ClickHouse deploy.
 - [Kubernetes Deploy](#kubernetes-deploy)
 - [Native Installation](#native-installation)
   - [RedHat (AlmaLinux)](#redhat-almalinux)
-- [Basic Commands](#basic-commands)
+- [Clickhouse Server Migration](#clickhouse-server-migration)
 - [Author](#author)
 
 ## References
 
 - [Install ClickHouse | ClickHouse Docs](https://clickhouse.com/docs/install)
 - [clickhousectl | ClickHouse Docs](https://clickhouse.com/docs/interfaces/cli)
+- [Backup and restore in ClickHouse](https://clickhouse.com/docs/operations/backup/overview)
+- [Altinity/clickhouse-backup | GitHub](https://github.com/Altinity/clickhouse-backup)
+- [User Guide | Altinity/clickhouse-backup | DeepWiki](https://deepwiki.com/Altinity/clickhouse-backup/2-user-guide)
+- [Moving ClickHouse to Another Server](https://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/rsync/)
 
 ## [Kubernetes Deploy](/database/clickhouse/k8s/)
 
@@ -59,20 +63,12 @@ sudo systemctl status clickhouse-server
 clickhouse-client # localhost:9000 user:default
 ```
 
-## Basic Commands
+## Clickhouse Server Migration
 
-- Show databases
-```sql
-SHOW DATABASES; -- \l
-```
-- Show tables
-```sql
-SHOW TABLES; -- \d
-```
-- Use database
-```sql
-USE database_name; -- \c <DATABASE>
-```
+Methods:
+1. Use native ClickHouse `BACKUP`-`RESTORE`. [reference](https://clickhouse.com/docs/operations/backup/overview)
+2. Use Altinity `clickhouse-backup` tool (Upload to S3, Google Cloud Storage, Cloud Object Service, FTP, SFTP, ). [reference](https://github.com/Altinity/clickhouse-backup)
+3. Run a full recursive sync of the data directory from the old server to the new one. [reference](https://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/rsync/)
 
 ## Author
 
