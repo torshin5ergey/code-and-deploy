@@ -43,7 +43,7 @@ Don't forget to map Keycloak groups and Client Scopes to corresponding Client Ro
 
 ### Client Scope Mappers
 
-- **Awx**
+- **Sonarqube**
   - `name`: User Property (firstName)
   - `email`: User Property (email)
   - `login`: User Property (username)
