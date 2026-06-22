@@ -26,7 +26,7 @@ Don't forget to map Keycloak groups and Client Scopes to corresponding Client Ro
 - Client ID: `rancher`
 - Valid redirect URIs: `https://<RANCHER_HOSTNAME>/verify-auth`
 - Web origins: `https://<RANCHER_HOSTNAME>`
-- Admin URL: `https://<RABBITMQ_HOSTNAME>`
+- Admin URL: `https://<RANCHER_HOSTNAME>`
 - Client authentication: `On`
 - Authorization: `Off`
 - Authentication flow: `Standard flow`, `Direct access grants`
