@@ -12,7 +12,7 @@ Go to `Users & Authentication > Auth Provider > Keycloak`
 - Client ID: `rancher`
 - Client Secret: `<KEYCLOAK_CLIENT_SECRET>`
 - Scopes: openid, Rancher
-- Endpoints:
+- Endpoints. You can use **Generate** to fill these endpoints automatically from the Keycloak URL and realm name, or **Specify** them manually. If your Keycloak uses slightly different paths, it’s safer to enter the URLs yourself. You can get the exact values from your realm’s OpenID configuration `https://<KEYCLOAK_HOSTNAME>/realms/<REALM>/.well-known/openid-configuration`
   - Rancher URL: `https://<RANCHER_HOSTNAME>/verify-auth`
   - Issuer: `https://<KEYCLOAK_HOSTNAME>/realms/<KEYCLOAK_REALM>`
   - Auth Endpoint: `https://<KEYCLOAK_HOSTNAME>/realms/<KEYCLOAK_REALM>/protocol/openid-connect/auth`
