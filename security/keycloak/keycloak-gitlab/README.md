@@ -57,17 +57,17 @@ Don't forget to map Keycloak groups and Client Scopes to corresponding Client Ro
 ### Client
 
 - Client ID: `gitlab`
-- Valid redirect URIs: `https://<GITLAB_HOSTNAME>/*`
-- Valid post logout redirect URIs: `https://<GITLAB_HOSTNAME>/*`
+- Valid redirect URIs: `https://<GITLAB_HOSTNAME>/users/auth/openid_connect/callback`
+- Valid post logout redirect URIs: `https://<GITLAB_HOSTNAME>`
 - Root URL: `https://<GITLAB_HOSTNAME>`
 - Home URL: `https://<GITLAB_HOSTNAME>`
-- Web Origins: `https://<GITLAB_HOSTNAME>/*`
+- Web Origins: `https://<GITLAB_HOSTNAME>`
 - Admin URL: `https://<GITLAB_HOSTNAME>`
 - Client authentication: `On`
 - Authorization: `Off`
 - Authentication flow: `Standard flow`, `Direct access grants`
 - Client Roles:
-  - `gitlab_users`
+  - `gitlab_access`
 
 ### Client Scope Mappers
 
@@ -77,4 +77,4 @@ Don't forget to map Keycloak groups and Client Scopes to corresponding Client Ro
   - `preferred_username`: User Attribute
   - `fitrstname`: User Attribute (firstName)
   - `lastname`: User Attribute (lastName)
-  - Scope: `gitlab_users`
+  - Scope: `gitlab_access`
