@@ -1,5 +1,7 @@
 # DefectDojo+Keycloak Connect OIDC
 
+Tested on DefectDojo 2.53.3, 2.58.2 and Keycloak 26.3
+
 ## References
 
 - [DefectDojo SSO Configuration (OAuth, SAML)](https://docs.defectdojo.com/en/customize_dojo/user_management/configure_sso/#keycloak)
