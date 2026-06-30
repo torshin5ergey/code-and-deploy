@@ -48,6 +48,8 @@ def keycloak_groups_sync(backend, details, response, user=None, *args, **kwargs)
     print(f"[Keycloak Groups Sync] Groups sync from Keycloak for User {user} completed successfully"
 )
 
+# dojo.pipeline. for 2.53.3
+# dojo.sso.pipeline. for 2.58.2
 SOCIAL_AUTH_PIPELINE = (
     "social_core.pipeline.social_auth.social_details",
     "dojo.pipeline.social_uid",
