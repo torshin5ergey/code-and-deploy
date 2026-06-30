@@ -12,39 +12,49 @@ The integration setup used the [SAML Single Sign On for Jira](https://wiki.resol
 
 - Install plugin `Administration > Manage Apps > Upload app`
 - Setup the plugin `Administration > SAML Single Sign On`
+
 **Identity Providers**
   - Name: `keycloak`
   - Display a button on Jira's Dashboard login gadget and login page: `On`
+
   **SAML IdP Metadata Settings**
   - Metadata URL: `https://<KEYCLOAK_HOSTNAME>/realms/<KEYCLOAK_REALM>/protocol/saml/descriptor`
+
   **Basic IdP Settings**
   - IdP Entity ID / Issuer: `https://<KEYCLOAK_HOSTNAME>/realms/<KEYCLOAK_REALM>`
   - Login Binding: `POST`
   - IdP POST Binding URL: `https://<KEYCLOAK_HOSTNAME>/realms/<KEYCLOAK_REALM>/protocol/saml`
+
   **Security Settings**
   - Certificate: `Keycloak > Realm settings > SAML 2.0 Identity Provider Metadata > <ds:X509Certificate>`
+
   **Additional authentication (WebSudo)**
   *Request for password when accessing Administration settings will also use Keycloak*
   - Enable additional authentication: `On`
   - Hide password field for additional authentication: `On`
   - Request new authentication from IdP for additional authentication: `On`
+
   **User Creation and Update**
   - User Update Method: `Update from SAML-Attributes (Just-in-Time Provisioning)`
   - Reactivate inactive users during login: `Off`
+
   **Attribute Mapping**
   - Find user by this Jira attribute: `E-Mail Address` (this will allow implementing an error when a user is trying to access Jira without belonging to the required group, for example, jira-users)
   - Attribute as received from Keycloak:
     - ATTR_NAMEID - Username (Regex And Replacement)
     - ATTR_FULLNAME - Full Name
     - ATTR_EMAIL - E-Mail Address
-    - ATTR_GROUPS - Gorups
+    - ATTR_GROUPS - Groups
+  
   **User Creation and Update from SAML Attributes**
   - Create New Users: `On`
   - Update users not created by this app: `On`
+
   **Group Settings**
   - Always add users to these groups: `None` (this will allow implementing an error when a user is trying to access Jira without belonging to the required group, for example, jira-users)
   - Create groups if they do not exist: `Off`
   - Remove from Groups: `On` **(The setting will only apply to users created by this app, never to the group memberships of *existing users* and *administrators*)**
+
 **Redirection**
   - Enable SSO Redirect: `Off`
   - Enable nosso: `On`
